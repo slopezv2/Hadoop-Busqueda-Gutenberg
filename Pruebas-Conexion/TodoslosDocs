@@ -1,0 +1,3 @@
+Palabra.all.each do |test|
+  puts test.palabra
+end
