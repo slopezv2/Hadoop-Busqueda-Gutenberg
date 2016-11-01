@@ -16,5 +16,6 @@ module BibliotecaGutenbergEs
     # -- all .rb files in that directory are automatically loaded.
     Mongoid.load!(File.expand_path('mongoid.yml', './config'))
     Mongoid.raise_not_found_error = false
+    Mongoid::QueryCache.enabled = true
   end
 end

@@ -1,6 +1,6 @@
 <div class="container">
 <h2>Término(s) buscados</h2>
-<h3 id="palabras" name="palabras">Ejemplo</h3>
+<h3 id="palabras" name="palabras"><%= @palabras %></h3>
 </div>
 <div class="row">
     <div class="col-xs-2"></div>
@@ -9,16 +9,20 @@
         <div class="list-group">
             <div  class="list-group-item active">
             <h4 class="list-group-item-heading text-center">Resultados</h4>
-
             </div>
-            <a href="#" class="list-group-item">
-            <h4 class="list-group-item-heading">Second List Group Item Heading</h4>
-            <p class="list-group-item-text">List Group Item Text</p>
+	    <% if @textos %>
+	    <% @textos.documentos.each do |texto| %>
+            <a href=<%= "/descargas?descargar=#{texto}" %>  class="list-group-item">
+            <h4 class="list-group-item-heading"><%= texto %></h4>
+            <p class="list-group-item-text">Click para descargar</p>
             </a>
-            <a href="#" class="list-group-item">
-            <h4 class="list-group-item-heading">Third List Group Item Heading</h4>
-            <p class="list-group-item-text">List Group Item Text</p>
+	    <% end %>
+	    <% else %>
+	    <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">No se pudo encontrar, trate con otra palabra</h4>
             </a>
+
+	    <% end %>
         </div>
     </div>
     <div class="col-xs-2"></div>

@@ -7,13 +7,15 @@
                 <h4> with ES_Gutenberg</h4>
             </div>
             <br>
+	    <%= form_tag("/busqueda", method: "get") do %>
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
+                <input type="text" class="form-control" placeholder="Search for..." id="busqueda" name="busqueda" />
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><div class="img-responsive"><%= image_tag('glyphicons/png/glyphicons-28-search.png')%></div></button>
+                    <button class="btn btn-default" type="submit" id="btnBusqueda"><div class="img-responsive"><%= image_tag('glyphicons/png/glyphicons-28-search.png')%></div></button>
                 </span>
             </div>
         </div>
+	<% end %>
         <div class="col-md-4"></div>
     </div>
     <br>
@@ -24,9 +26,13 @@
         </div>
         <br>
          <ul class="list-group">
-            <a class="list-group-item text-center">First</a>
-            <a class="list-group-item text-center">First</a>
-            <a class="list-group-item text-center">First</a>
+	   <% if @top_busquedas %>
+	   <% @top_busquedas.each do |busqueda| %> 
+           <a class="list-group-item text-center"><%= busqueda.palabra %></a>
+           <% end %>
+	   <% else %>
+	   <a class="list-group-item text-center">No hay opciones</a>
+	   <% end %>
         </ul>
     </div>
 </div>
