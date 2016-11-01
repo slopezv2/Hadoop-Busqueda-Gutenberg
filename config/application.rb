@@ -15,5 +15,6 @@ module BibliotecaGutenbergEs
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     Mongoid.load!(File.expand_path('mongoid.yml', './config'))
+    Mongoid.raise_not_found_error = false
   end
 end
